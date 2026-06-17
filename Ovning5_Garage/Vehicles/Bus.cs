@@ -13,5 +13,10 @@ namespace Ovning5_Garage.Vehicles
 
         public string BusType { get; set; }
         public override double Size => 5.0;
+
+        public override string ToString()
+        {
+            return base.ToString() + $" | Bus Type: {BusType}";
+        }
     }
 }

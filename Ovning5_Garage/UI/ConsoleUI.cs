@@ -14,7 +14,7 @@ namespace Ovning5_Garage.UI
 
         public void Run()
         {
-            _handler.CreateGarage(10);
+            _handler.CreateGarage(100);
 
             bool isRunning = true;
             while (isRunning)
@@ -27,6 +27,8 @@ namespace Ovning5_Garage.UI
                 Console.WriteLine("4. Search Vehicle");
                 Console.WriteLine("5. Save Garage Data");
                 Console.WriteLine("6. Load Garage Data");
+                Console.WriteLine("7. Put Seed Data");
+                Console.WriteLine("8. Garage Detail Overview");
                 Console.WriteLine("0. Exit Program");
                 Console.WriteLine("======================================");
                 Console.Write("Enter the menu number: ");
@@ -93,6 +95,44 @@ namespace Ovning5_Garage.UI
                         {
                             Console.WriteLine("\nCould not load data...");
                         }
+                        Console.WriteLine("\nPress any key to continue...");
+                        Console.ReadKey();
+                        break;
+
+                    case "7":
+                        _handler.SeedData();
+                        Console.WriteLine("\nPress any key to continue...");
+                        Console.ReadKey();
+                        break;
+
+                    case "8":
+                        Console.Clear();
+                        Console.WriteLine("\n===== Garage Detail Overview =====");
+
+                        var allVehicles = _handler.GetVehicles();
+
+                        int totalCount = 0;
+                        if (allVehicles != null)
+                        {
+                            foreach (var v in allVehicles)
+                            {
+                                if (v != null)
+                                {
+                                    totalCount++;
+                                    Console.WriteLine(v.ToString());
+                                }
+                            }
+                        }
+
+                        if (totalCount == 0)
+                        {
+                            Console.WriteLine("\nThe garage is completely empty!");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"\nTotal parked vehicles: {totalCount}");
+                        }
+
                         Console.WriteLine("\nPress any key to continue...");
                         Console.ReadKey();
                         break;

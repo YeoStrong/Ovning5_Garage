@@ -13,5 +13,10 @@ namespace Ovning5_Garage.Vehicles
 
         public string CarType { get; set; }
         public override double Size => 1.0;
+
+        public override string ToString()
+        {
+            return base.ToString() + $" | Car Type: {CarType}";
+        }
     }
 }

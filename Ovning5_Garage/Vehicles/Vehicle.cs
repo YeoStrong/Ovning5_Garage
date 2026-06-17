@@ -32,6 +32,9 @@ namespace Ovning5_Garage.Vehicles
         public string Color { get; init; }
         public virtual double Size { get; } = 1.0;
 
-        
+        public override string ToString()
+        {
+            return $"[{GetType().Name}] RegNr: {RegNr} | Name: {Name} | Brand: {Brand} | Color: {Color}  | Size: {Size}";
+        }
     }
 }

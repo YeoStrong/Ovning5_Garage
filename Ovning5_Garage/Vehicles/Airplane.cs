@@ -13,5 +13,10 @@ namespace Ovning5_Garage.Vehicles
 
         public string ApType { get; set; }
         public override double Size => 20.0;
+
+        public override string ToString()
+        {
+            return base.ToString() + $" | Airplane Type: {ApType}";
+        }
     }
 }

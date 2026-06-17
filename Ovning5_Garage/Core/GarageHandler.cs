@@ -82,5 +82,42 @@ namespace Ovning5_Garage.Core
                 return false;
             }
         }
+
+        public void SeedData()
+        {
+            if (_myGarage == null)
+            {
+                Console.WriteLine("Please create a garage first!");
+                return;
+            }
+
+            var testVehicles = new List<Vehicle>
+    {
+        new Car("ABC123", "Model S", "Tesla", "Black", "Sedan"),
+        new Car("XYZ789", "Golf", "Volkswagen", "Red", "Hatchback"),
+        new Motorcycle("MOC111", "Ninja", "Kawasaki", "Black", "Sports"),
+        new Bus("BUS222", "CityBus", "Volvo", "White", "DoubleDecker"),
+        new Boat("BOA333", "Oceania", "Yamaha", "Blue", "Yacht"),
+        new Airplane("ZOZKAK", "Raiju", "Dusan", "Black", "Fighter")
+    };
+
+            int successCount = 0;
+            foreach (var v in testVehicles)
+            {
+                if (ParkVehicle(v))
+                {
+                    successCount++;
+                }
+            }
+
+            Console.WriteLine($"\nSuccessfully seeded {successCount} test vehicles into the garage!");
+        }
+
+        public IEnumerable<Vehicle> GetVehicles()
+        {
+            if ( _myGarage == null) return Enumerable.Empty<Vehicle>();
+
+            return _myGarage;
+        }
     }
 }

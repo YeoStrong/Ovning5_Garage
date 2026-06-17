@@ -13,5 +13,10 @@ namespace Ovning5_Garage.Vehicles
 
         public string BoatType { get; set; }
         public override double Size => 10.0;
+
+        public override string ToString()
+        {
+            return base.ToString() + $" | Boat Type: {BoatType}";
+        }
     }
 }

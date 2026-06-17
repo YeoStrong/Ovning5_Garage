@@ -13,5 +13,10 @@ namespace Ovning5_Garage.Vehicles
 
         public string McType { get; set; }
         public override double Size => 1.0 / 3.0;
+
+        public override string ToString()
+        {
+            return base.ToString() + $" | Motorcycle Type: {McType}";
+        }
     }
 }
