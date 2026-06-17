@@ -116,6 +116,7 @@ namespace Ovning5_Garage.UI
             Console.WriteLine("===== Search Vehicle =====");
             Console.WriteLine("1. Search by Register Number");
             Console.WriteLine("2. Search by Color");
+            Console.WriteLine("3. Search by Register Number & Color");
             string searchOption = ReadValidString("Choose search option: ");
 
             IEnumerable<Vehicle> results = Enumerable.Empty<Vehicle>();
@@ -123,13 +124,19 @@ namespace Ovning5_Garage.UI
             switch (searchOption)
             {
                 case "1":
-                    string regInput = ReadValidString("\nEnter Register Number (or part of it if you don't remember well): ");
+                    string regInput = ReadValidString("\nEnter Register Number  of it(or part if you don't remember well): ").ToUpper();
                     results = _handler.SearchVehicles(v => v.RegNr.Contains(regInput));
                     break;
 
                 case "2":
-                    string colorInput = ReadValidString("\nEnter Color to search: ");
+                    string colorInput = ReadValidString("\nEnter Color to search: ").ToUpper();
                     results = _handler.SearchVehicles(v => v.Color.ToUpper() == colorInput);
+                    break;
+
+                case "3":
+                    regInput = ReadValidString("\nEnter Register Number  of it(or part if you don't remember well): ").ToUpper();
+                    colorInput = ReadValidString("\nEnter Color to search: ");
+                    results = _handler.SearchVehicles(v => v.RegNr.Contains(regInput) && v.Color.ToUpper() == colorInput);
                     break;
 
                 default:
